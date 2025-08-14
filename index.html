@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Die Reise der Wissenschaftlerin Maya - Ein interaktives Bilderbuch über die Informationsdienstleistenden der Max-Planck-Gesellschaft">
-    <meta name="author" content="Max-Planck-Gesellschaft">
-    <meta name="keywords" content="Max-Planck-Gesellschaft, Wissenschaft, Bibliothek, Informationsdienstleistende, Open Access">
+    <meta name="description" content="Maya the Scientist's Journey - An interactive storybook about Max Planck Society's information services">
+    <meta name="author" content="Max Planck Society">
+    <meta name="keywords" content="Max Planck Society, Science, Library, Information Services, Open Access">
     
-    <!-- Open Graph Meta Tags für besseres Teilen -->
-    <meta property="og:title" content="Die Reise der Wissenschaftlerin Maya">
-    <meta property="og:description" content="Ein interaktives Bilderbuch über die Wissenspartner der Max-Planck-Gesellschaft">
+    <!-- Open Graph Meta Tags for better sharing -->
+    <meta property="og:title" content="Maya the Scientist's Journey">
+    <meta property="og:description" content="An interactive storybook about Max Planck Society's knowledge partners">
     <meta property="og:type" content="website">
     
-    <title>Die Reise der Wissenschaftlerin Maya - MPG Bilderbuch</title>
+    <title>Maya the Scientist's Journey - MPG Storybook</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMzQ5OERCIi8+Cjx0ZXh0IHg9IjE2IiB5PSIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TTwvdGV4dD4KPC9zdmc+">
@@ -63,7 +63,7 @@
             border: 3px solid #8B4513;
             border-radius: 10px;
             padding: 30px;
-            display: none;
+            display: none; /* Completely hide inactive pages */
             flex-direction: column;
             justify-content: space-between;
             box-shadow: inset 0 0 30px rgba(139, 69, 19, 0.1);
@@ -277,6 +277,7 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             .book { 
                 width: 95vw; 
@@ -332,16 +333,16 @@
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-text">Die Reise beginnt...</div>
+        <div class="loading-text">The journey begins...</div>
         <div class="spinner"></div>
     </div>
 
     <div class="storybook">
         <div class="book" id="book">
-            <!-- Seite 1: Titel -->
+            <!-- Page 1: Title -->
             <div class="page active title-page">
-                <h1>Die Reise der Wissenschaftlerin Maya</h1>
-                <p class="subtitle">Eine Geschichte über die Wissenspartner der Max-Planck-Gesellschaft</p>
+                <h1>Maya the Scientist's Journey</h1>
+                <p class="subtitle">A Story About the Knowledge Partners of the Max Planck Society</p>
                 <svg width="300" height="200" viewBox="0 0 300 200">
                     <defs>
                         <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -349,9 +350,9 @@
                             <stop offset="100%" style="stop-color:#E0F6FF"/>
                         </linearGradient>
                     </defs>
-                    <!-- Himmel -->
+                    <!-- Sky -->
                     <rect width="300" height="200" fill="url(#skyGrad)"/>
-                    <!-- Berge -->
+                    <!-- Mountains -->
                     <polygon points="0,150 80,100 160,150 300,150 300,200 0,200" fill="#8FBC8F"/>
                     <!-- Maya -->
                     <circle cx="150" cy="120" r="20" fill="#FDBCB4"/>
@@ -361,9 +362,9 @@
                     <rect x="140" y="140" width="20" height="30" fill="#FF6B6B"/>
                     <rect x="135" y="145" width="8" height="20" fill="#FDBCB4"/>
                     <rect x="157" y="145" width="8" height="20" fill="#FDBCB4"/>
-                    <!-- Buch in der Hand -->
+                    <!-- Book in hand -->
                     <rect x="130" y="150" width="8" height="12" fill="#4ECDC4"/>
-                    <!-- Sterne -->
+                    <!-- Stars -->
                     <polygon points="50,30 52,36 58,36 53,40 55,46 50,42 45,46 47,40 42,36 48,36" fill="#FFD700"/>
                     <polygon points="250,50 252,56 258,56 253,60 255,66 250,62 245,66 247,60 242,56 248,56" fill="#FFD700"/>
                 </svg>
@@ -373,20 +374,20 @@
                 <div class="page-number">1</div>
             </div>
 
-            <!-- Seite 2: Maya's Idee -->
+            <!-- Page 2: Maya's Idea -->
             <div class="page">
                 <div class="page-content">
                     <div class="text-content">
-                        <h2>Maya's große Idee</h2>
-                        <p>Maya hatte eine fantastische Forschungsidee!</p>
-                        <p>Aber sie wusste nicht, wie sie daraus eine echte Publikation machen sollte.</p>
-                        <p>Das ist viel zu kompliziert!, seufzte Maya.</p>
+                        <h2>Maya's Big Idea</h2>
+                        <p>Maya had a fantastic research idea!</p>
+                        <p>But she didn't know how to turn it into a real publication.</p>
+                        <p>This is way too complicated!, Maya sighed.</p>
                     </div>
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Hintergrund Labor -->
+                            <!-- Laboratory background -->
                             <rect width="250" height="300" fill="#F0F8FF"/>
-                            <!-- Schreibtisch -->
+                            <!-- Desk -->
                             <rect x="20" y="200" width="210" height="100" fill="#8B4513"/>
                             <!-- Maya -->
                             <circle cx="125" cy="150" r="25" fill="#FDBCB4"/>
@@ -394,15 +395,15 @@
                             <circle cx="130" cy="145" r="3" fill="#000"/>
                             <path d="M 120 155 Q 125 160 130 155" stroke="#000" stroke-width="2" fill="none"/>
                             <rect x="110" y="175" width="30" height="40" fill="#4ECDC4"/>
-                            <!-- Haare -->
+                            <!-- Hair -->
                             <ellipse cx="125" cy="135" rx="20" ry="15" fill="#8B4513"/>
-                            <!-- Notizen -->
+                            <!-- Notes -->
                             <rect x="80" y="210" width="20" height="15" fill="#FFF"/>
                             <rect x="150" y="215" width="25" height="20" fill="#FFF"/>
-                            <!-- Glühbirne (Idee) -->
+                            <!-- Light bulb (idea) -->
                             <circle cx="180" cy="100" r="15" fill="#FFD700"/>
                             <rect x="175" y="115" width="10" height="8" fill="#C0C0C0"/>
-                            <!-- Fragezeichen -->
+                            <!-- Question marks -->
                             <text x="60" y="80" font-family="Arial" font-size="30" fill="#FF6B6B">?</text>
                             <text x="70" y="120" font-family="Arial" font-size="20" fill="#FF6B6B">?</text>
                         </svg>
@@ -411,40 +412,40 @@
                 <div class="page-number">2</div>
             </div>
 
-            <!-- Seite 3: Die Bibliothek -->
+            <!-- Page 3: The Library -->
             <div class="page">
                 <div class="page-content">
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Bibliothek -->
+                            <!-- Library -->
                             <rect width="250" height="300" fill="#FFF8DC"/>
-                            <!-- Bücherregale -->
+                            <!-- Bookshelves -->
                             <rect x="10" y="50" width="30" height="180" fill="#8B4513"/>
                             <rect x="210" y="50" width="30" height="180" fill="#8B4513"/>
-                            <!-- Bücher -->
+                            <!-- Books -->
                             <rect x="12" y="60" width="6" height="25" fill="#FF6B6B"/>
                             <rect x="18" y="60" width="6" height="25" fill="#4ECDC4"/>
                             <rect x="24" y="60" width="6" height="25" fill="#FFD93D"/>
                             <rect x="30" y="60" width="6" height="25" fill="#6BCF7F"/>
-                            <!-- Mehr Bücher -->
+                            <!-- More books -->
                             <rect x="212" y="100" width="6" height="30" fill="#FF6B6B"/>
                             <rect x="218" y="100" width="6" height="30" fill="#4ECDC4"/>
                             <rect x="224" y="100" width="6" height="30" fill="#FFD93D"/>
                             <rect x="230" y="100" width="6" height="30" fill="#6BCF7F"/>
-                            <!-- Dr. Wissen (Informationsdienstleister) -->
+                            <!-- Dr. Knowledge (Information specialist) -->
                             <circle cx="125" cy="120" r="20" fill="#FDBCB4"/>
                             <circle cx="120" cy="115" r="2" fill="#000"/>
                             <circle cx="130" cy="115" r="2" fill="#000"/>
                             <path d="M 120 125 Q 125 130 130 125" stroke="#000" stroke-width="2" fill="none"/>
                             <rect x="115" y="140" width="20" height="35" fill="#2C3E50"/>
-                            <!-- Brille -->
+                            <!-- Glasses -->
                             <circle cx="120" cy="115" r="6" stroke="#000" stroke-width="1" fill="none"/>
                             <circle cx="130" cy="115" r="6" stroke="#000" stroke-width="1" fill="none"/>
                             <line x1="126" y1="115" x2="124" y2="115" stroke="#000" stroke-width="1"/>
                             <!-- Maya -->
                             <circle cx="80" cy="150" r="18" fill="#FDBCB4"/>
                             <rect x="70" y="168" width="20" height="30" fill="#4ECDC4"/>
-                            <!-- Schreibtisch -->
+                            <!-- Desk -->
                             <rect x="60" y="200" width="130" height="80" fill="#DEB887"/>
                             <!-- Computer -->
                             <rect x="100" y="180" width="50" height="30" fill="#000"/>
@@ -452,49 +453,49 @@
                         </svg>
                     </div>
                     <div class="text-content">
-                        <h2>Dr. Wissen hilft!</h2>
-                        <p>Plötzlich klopfte jemand an die Tür.</p>
-                        <p>Hallo Maya! Ich bin Dr. Wissen und helfe dir gerne!</p>
-                        <p>Wir begleiten dich von der Idee bis zur Publikation!</p>
+                        <h2>Dr. Knowledge Helps!</h2>
+                        <p>Suddenly someone knocked on the door.</p>
+                        <p>Hello Maya! I'm Dr. Knowledge and I'm here to help!</p>
+                        <p>We'll guide you from idea to publication!</p>
                     </div>
                 </div>
                 <div class="page-number">3</div>
             </div>
 
-            <!-- Seite 4: Das Ökosystem -->
+            <!-- Page 4: The Ecosystem -->
             <div class="page">
                 <div class="page-content">
                     <div class="text-content">
-                        <h2>Das magische Ökosystem</h2>
-                        <p>Schau nur, Maya! Hier ist unser Ökosystem!</p>
-                        <p>Es gab ruhige Räume zum Denken, Coworking-Bereiche für Teams und digitale Tools.</p>
-                        <p>Hier kannst du dich ganz auf deine Forschung konzentrieren!</p>
+                        <h2>The Magical Ecosystem</h2>
+                        <p>Look Maya! Here's our ecosystem!</p>
+                        <p>There were quiet rooms for thinking, coworking areas for teams, and digital tools.</p>
+                        <p>Here you can focus completely on your research!</p>
                     </div>
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Bibliotheksraum -->
+                            <!-- Library room -->
                             <rect width="250" height="300" fill="#E6F3FF"/>
-                            <!-- Boden -->
+                            <!-- Floor -->
                             <rect x="0" y="250" width="250" height="50" fill="#DEB887"/>
-                            <!-- Coworking Bereich -->
+                            <!-- Coworking area -->
                             <rect x="20" y="200" width="80" height="50" fill="#FFE5B4"/>
                             <text x="35" y="230" font-family="Arial" font-size="12" fill="#2C3E50">Coworking</text>
-                            <!-- Stille Zone -->
+                            <!-- Quiet zone -->
                             <rect x="150" y="180" width="80" height="70" fill="#E8F8F5"/>
-                            <text x="170" y="220" font-family="Arial" font-size="12" fill="#2C3E50">Stille Zone</text>
-                            <!-- Computer Bereich -->
+                            <text x="170" y="220" font-family="Arial" font-size="12" fill="#2C3E50">Quiet Zone</text>
+                            <!-- Computer area -->
                             <rect x="80" y="120" width="90" height="60" fill="#FFF0F5"/>
                             <text x="110" y="155" font-family="Arial" font-size="12" fill="#2C3E50">Digital</text>
-                            <!-- Personen -->
+                            <!-- People -->
                             <circle cx="60" cy="210" r="8" fill="#FDBCB4"/>
                             <circle cx="190" cy="190" r="8" fill="#FDBCB4"/>
                             <circle cx="125" cy="130" r="8" fill="#FDBCB4"/>
-                            <!-- Bücher in Regalen -->
+                            <!-- Books on shelves -->
                             <rect x="10" y="50" width="230" height="20" fill="#8B4513"/>
                             <rect x="15" y="55" width="5" height="10" fill="#FF6B6B"/>
                             <rect x="25" y="55" width="5" height="10" fill="#4ECDC4"/>
                             <rect x="35" y="55" width="5" height="10" fill="#FFD93D"/>
-                            <!-- Wolken für "magisch" -->
+                            <!-- Clouds for "magical" feeling -->
                             <ellipse cx="50" cy="30" rx="15" ry="8" fill="#FFF" opacity="0.8"/>
                             <ellipse cx="200" cy="40" rx="20" ry="10" fill="#FFF" opacity="0.8"/>
                         </svg>
@@ -503,35 +504,35 @@
                 <div class="page-number">4</div>
             </div>
 
-            <!-- Seite 5: Die Services -->
+            <!-- Page 5: The Services -->
             <div class="page">
                 <div class="page-content">
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Werkzeugkasten -->
+                            <!-- Toolbox -->
                             <rect width="250" height="300" fill="#F0FFFF"/>
-                            <!-- Großer Werkzeugkasten -->
+                            <!-- Large toolbox -->
                             <rect x="50" y="100" width="150" height="120" fill="#8B4513"/>
                             <rect x="55" y="105" width="140" height="110" fill="#DEB887"/>
                             <!-- Tools -->
-                            <!-- KI Symbol -->
+                            <!-- AI symbol -->
                             <circle cx="90" cy="140" r="15" fill="#FF6B6B"/>
-                            <text x="85" y="145" font-family="Arial" font-size="12" fill="#FFF">KI</text>
-                            <!-- Daten Symbol -->
+                            <text x="85" y="145" font-family="Arial" font-size="12" fill="#FFF">AI</text>
+                            <!-- Data symbol -->
                             <rect x="110" y="125" width="20" height="30" fill="#4ECDC4"/>
                             <rect x="115" y="130" width="10" height="5" fill="#FFF"/>
                             <rect x="115" y="140" width="10" height="5" fill="#FFF"/>
                             <rect x="115" y="150" width="10" height="5" fill="#FFF"/>
-                            <!-- Open Access Symbol -->
+                            <!-- Open Access symbol -->
                             <circle cx="160" cy="140" r="15" fill="#6BCF7F"/>
                             <text x="155" y="145" font-family="Arial" font-size="10" fill="#FFF">OA</text>
-                            <!-- Schulung Symbol -->
+                            <!-- Training symbol -->
                             <rect x="75" y="170" width="25" height="15" fill="#FFD93D"/>
                             <text x="83" y="180" font-family="Arial" font-size="8" fill="#000">EDU</text>
-                            <!-- ORCID Symbol -->
+                            <!-- ORCID symbol -->
                             <circle cx="140" cy="180" r="12" fill="#A6E22E"/>
                             <text x="135" y="185" font-family="Arial" font-size="8" fill="#000">ID</text>
-                            <!-- Maya schaut zu -->
+                            <!-- Maya watching -->
                             <circle cx="125" cy="50" r="20" fill="#FDBCB4"/>
                             <circle cx="120" cy="45" r="2" fill="#000"/>
                             <circle cx="130" cy="45" r="2" fill="#000"/>
@@ -540,27 +541,27 @@
                         </svg>
                     </div>
                     <div class="text-content">
-                        <h2>Der Werkzeugkasten</h2>
-                        <p>Hier sind all unsere magischen Werkzeuge!</p>
-                        <p>KI-Schulungen, Datenmanagement, ORCID-IDs und Open Access!</p>
-                        <p>Damit wird deine Forschung in der ganzen Welt sichtbar!</p>
+                        <h2>The Magic Toolbox</h2>
+                        <p>Here are all our magical tools!</p>
+                        <p>AI training, data management, ORCID IDs, and Open Access!</p>
+                        <p>This will make your research visible around the world!</p>
                     </div>
                 </div>
                 <div class="page-number">5</div>
             </div>
 
-            <!-- Seite 6: Open Access -->
+            <!-- Page 6: Open Access -->
             <div class="page">
                 <div class="page-content">
                     <div class="text-content">
-                        <h2>Das Open Access-Portal</h2>
-                        <p>Das ist das Open Access-Portal!</p>
-                        <p>Hier wird deine Forschung für alle Menschen zugänglich.</p>
-                        <p>So können andere Wissenschaftler von deiner Arbeit lernen!</p>
+                        <h2>The Open Access Portal</h2>
+                        <p>This is the Open Access Portal!</p>
+                        <p>Here your research becomes accessible to everyone.</p>
+                        <p>So other scientists can learn from your work!</p>
                     </div>
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Himmelshintergrund -->
+                            <!-- Night sky background -->
                             <defs>
                                 <radialGradient id="glow" cx="50%" cy="50%">
                                     <stop offset="0%" style="stop-color:#FFD700"/>
@@ -568,23 +569,23 @@
                                 </radialGradient>
                             </defs>
                             <rect width="250" height="300" fill="#191970"/>
-                            <!-- Leuchtende Tür -->
+                            <!-- Glowing door -->
                             <rect x="100" y="120" width="60" height="100" fill="url(#glow)"/>
                             <rect x="105" y="125" width="50" height="90" fill="#FFD700"/>
                             <circle cx="145" cy="170" r="3" fill="#8B4513"/>
-                            <!-- Lichtstrahlen -->
+                            <!-- Light rays -->
                             <polygon points="125,120 135,50 140,50 130,120" fill="#FFFF00" opacity="0.7"/>
                             <polygon points="125,120 115,40 120,40 130,120" fill="#FFFF00" opacity="0.7"/>
                             <polygon points="125,120 145,35 150,35 130,120" fill="#FFFF00" opacity="0.7"/>
-                            <!-- Maya und Dr. Wissen -->
+                            <!-- Maya and Dr. Knowledge -->
                             <circle cx="70" cy="180" r="15" fill="#FDBCB4"/>
                             <rect x="60" y="195" width="20" height="25" fill="#4ECDC4"/>
                             <circle cx="180" cy="170" r="15" fill="#FDBCB4"/>
                             <rect x="170" y="185" width="20" height="25" fill="#2C3E50"/>
-                            <!-- Sterne -->
+                            <!-- Stars -->
                             <polygon points="30,50 32,56 38,56 33,60 35,66 30,62 25,66 27,60 22,56 28,56" fill="#FFF"/>
                             <polygon points="200,80 202,86 208,86 203,90 205,96 200,92 195,96 197,90 192,86 198,86" fill="#FFF"/>
-                            <!-- Open Access Symbol -->
+                            <!-- Open Access symbol -->
                             <circle cx="125" cy="170" r="8" fill="#FFF"/>
                             <text x="120" y="175" font-family="Arial" font-size="10" fill="#000">OA</text>
                         </svg>
@@ -593,64 +594,64 @@
                 <div class="page-number">6</div>
             </div>
 
-            <!-- Seite 7: Die Publikation -->
+            <!-- Page 7: The Publication -->
             <div class="page">
                 <div class="page-content">
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
                             <!-- Celebration background -->
                             <rect width="250" height="300" fill="#FFF8DC"/>
-                            <!-- Konfetti -->
+                            <!-- Confetti -->
                             <rect x="50" y="30" width="3" height="3" fill="#FF6B6B" transform="rotate(45 50 30)"/>
                             <rect x="80" y="50" width="3" height="3" fill="#4ECDC4" transform="rotate(30 80 50)"/>
                             <rect x="200" y="40" width="3" height="3" fill="#FFD93D" transform="rotate(60 200 40)"/>
                             <rect x="170" y="70" width="3" height="3" fill="#6BCF7F" transform="rotate(90 170 70)"/>
-                            <!-- Große Publikation -->
+                            <!-- Large publication -->
                             <rect x="75" y="100" width="100" height="130" fill="#FFF"/>
                             <rect x="70" y="95" width="100" height="130" fill="#4169E1"/>
                             <text x="90" y="120" font-family="Arial" font-size="12" fill="#FFF">Maya's</text>
-                            <text x="85" y="140" font-family="Arial" font-size="12" fill="#FFF">Forschung</text>
+                            <text x="85" y="140" font-family="Arial" font-size="12" fill="#FFF">Research</text>
                             <text x="95" y="160" font-family="Arial" font-size="10" fill="#FFF">Published</text>
                             <text x="100" y="180" font-family="Arial" font-size="10" fill="#FFF">Open</text>
                             <text x="95" y="200" font-family="Arial" font-size="10" fill="#FFF">Access</text>
-                            <!-- Maya jubelt -->
+                            <!-- Maya celebrating -->
                             <circle cx="125" cy="250" r="20" fill="#FDBCB4"/>
                             <circle cx="120" cy="245" r="2" fill="#000"/>
                             <circle cx="130" cy="245" r="2" fill="#000"/>
                             <ellipse cx="125" cy="255" rx="8" ry="5" fill="#000"/>
                             <rect x="115" y="270" width="20" height="25" fill="#4ECDC4"/>
-                            <!-- Jubelnde Arme -->
+                            <!-- Celebrating arms -->
                             <rect x="100" y="260" width="12" height="4" fill="#FDBCB4" transform="rotate(-30 106 262)"/>
                             <rect x="138" y="260" width="12" height="4" fill="#FDBCB4" transform="rotate(30 144 262)"/>
-                            <!-- Weltkugel im Hintergrund -->
+                            <!-- Globe in background -->
                             <circle cx="200" cy="150" r="25" fill="#87CEEB"/>
                             <ellipse cx="200" cy="140" rx="15" ry="8" fill="#6BCF7F"/>
                             <ellipse cx="210" cy="155" rx="8" ry="12" fill="#6BCF7F"/>
                         </svg>
                     </div>
                     <div class="text-content">
-                        <h2>Mayas Erfolg!</h2>
-                        <p>Einige Monate später war es geschafft!</p>
-                        <p>Maya hielt stolz ihre erste Publikation in den Händen.</p>
-                        <p>Danke, Dr. Wissen! Das wäre ohne euch nie möglich gewesen!</p>
+                        <h2>Maya's Success!</h2>
+                        <p>A few months later, it was done!</p>
+                        <p>Maya proudly held her first publication in her hands.</p>
+                        <p>Thank you, Dr. Knowledge! This would never have been possible without you!</p>
                     </div>
                 </div>
                 <div class="page-number">7</div>
             </div>
 
-            <!-- Seite 8: Das Ende -->
+            <!-- Page 8: The End -->
             <div class="page">
                 <div class="page-content">
                     <div class="text-content">
-                        <h2>Die Moral der Geschichte</h2>
-                        <p>Die Informationsdienstleistenden sind wahre Wissenspartner!</p>
-                        <p>Sie helfen allen Wissenschaftlern von der Idee bis zur Publikation.</p>
-                        <p><strong>Sprechen Sie uns jederzeit gerne an!</strong></p>
-                        <p style="text-align: center; font-size: 1.4em; color: #E74C3C; margin-top: 20px;"><em>Ende</em></p>
+                        <h2>The Moral of the Story</h2>
+                        <p>The information specialists are true knowledge partners!</p>
+                        <p>They help all scientists from idea to publication.</p>
+                        <p><strong>Please feel free to contact us anytime!</strong></p>
+                        <p style="text-align: center; font-size: 1.4em; color: #E74C3C; margin-top: 20px;"><em>The End</em></p>
                     </div>
                     <div class="illustration">
                         <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Sonnenuntergang -->
+                            <!-- Sunset -->
                             <defs>
                                 <linearGradient id="sunset" x1="0%" y1="0%" x2="0%" y2="100%">
                                     <stop offset="0%" style="stop-color:#FFB347"/>
@@ -659,27 +660,27 @@
                                 </linearGradient>
                             </defs>
                             <rect width="250" height="300" fill="url(#sunset)"/>
-                            <!-- Sonne -->
+                            <!-- Sun -->
                             <circle cx="125" cy="80" r="30" fill="#FFD700"/>
-                            <!-- MPG Gebäude Silhouette -->
+                            <!-- MPG building silhouette -->
                             <rect x="30" y="180" width="40" height="120" fill="#2C3E50"/>
                             <rect x="80" y="160" width="50" height="140" fill="#2C3E50"/>
                             <rect x="140" y="170" width="45" height="130" fill="#2C3E50"/>
                             <rect x="190" y="190" width="35" height="110" fill="#2C3E50"/>
-                            <!-- Fenster -->
+                            <!-- Windows -->
                             <rect x="35" y="190" width="8" height="10" fill="#FFD700"/>
                             <rect x="85" y="170" width="8" height="10" fill="#FFD700"/>
                             <rect x="145" y="180" width="8" height="10" fill="#FFD700"/>
-                            <!-- Maya und Dr. Wissen als Silhouetten -->
+                            <!-- Maya and Dr. Knowledge as silhouettes -->
                             <circle cx="70" cy="200" r="8" fill="#000"/>
                             <rect x="65" y="208" width="10" height="15" fill="#000"/>
                             <circle cx="110" cy="195" r="8" fill="#000"/>
                             <rect x="105" y="203" width="10" height="15" fill="#000"/>
-                            <!-- Vögel -->
+                            <!-- Birds -->
                             <path d="M 180 100 Q 185 95 190 100" stroke="#000" stroke-width="2" fill="none"/>
                             <path d="M 200 90 Q 205 85 210 90" stroke="#000" stroke-width="2" fill="none"/>
-                            <!-- Text "Ende" -->
-                            <text x="125" y="250" font-family="Arial" font-size="24" fill="#2C3E50" text-anchor="middle">Ende</text>
+                            <!-- "The End" text -->
+                            <text x="125" y="250" font-family="Arial" font-size="24" fill="#2C3E50" text-anchor="middle">The End</text>
                         </svg>
                     </div>
                 </div>
@@ -688,8 +689,8 @@
         </div>
 
         <div class="navigation">
-            <button class="nav-btn" id="prevBtn" onclick="prevPage()" aria-label="Vorherige Seite">◀ Zurück</button>
-            <button class="nav-btn" id="nextBtn" onclick="nextPage()" aria-label="Nächste Seite">Weiter ▶</button>
+            <button class="nav-btn" id="prevBtn" onclick="prevPage()" aria-label="Previous page">◀ Previous</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextPage()" aria-label="Next page">Next ▶</button>
         </div>
     </div>
 
@@ -704,19 +705,19 @@
         }
 
         function showPage(pageIndex) {
-            // Aktuelle Seite ausblenden
+            // Hide current active page
             const currentActivePage = document.querySelector('.page.active');
             if (currentActivePage) {
                 currentActivePage.classList.remove('active');
                 currentActivePage.classList.add('sliding-out');
                 
-                // Nach der Ausblend-Animation die Klasse entfernen
+                // Remove sliding class after animation
                 setTimeout(() => {
                     currentActivePage.classList.remove('sliding-out');
                 }, 400);
             }
             
-            // Neue Seite anzeigen
+            // Show new page
             setTimeout(() => {
                 if (pageIndex >= 0 && pageIndex < totalPages) {
                     pages[pageIndex].classList.add('active');
@@ -731,7 +732,7 @@
                 currentPage++;
                 showPage(currentPage);
                 
-                // Visuelles Feedback
+                // Visual feedback
                 const activeBtn = document.getElementById('nextBtn');
                 activeBtn.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -745,7 +746,7 @@
                 currentPage--;
                 showPage(currentPage);
                 
-                // Visuelles Feedback
+                // Visual feedback
                 const activeBtn = document.getElementById('prevBtn');
                 activeBtn.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -765,7 +766,7 @@
             }
         });
 
-        // Touch/Swipe support for mobile - improved
+        // Enhanced touch/swipe support for mobile devices
         let startX = 0;
         let endX = 0;
         let startY = 0;
@@ -787,6 +788,7 @@
             const diffX = Math.abs(currentX - startX);
             const diffY = Math.abs(currentY - startY);
             
+            // Detect if user is scrolling vertically
             if (diffY > diffX) {
                 isScrolling = true;
             }
@@ -798,7 +800,7 @@
             endX = event.changedTouches[0].clientX;
             handleSwipe();
             
-            // Reset
+            // Reset values
             startX = 0;
             startY = 0;
             endX = 0;
@@ -818,9 +820,9 @@
             }
         }
 
-        // Initialize
+        // Initialize application
         document.addEventListener('DOMContentLoaded', function() {
-            // Hide loading screen
+            // Hide loading screen after brief delay
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
             }, 1500);
@@ -828,7 +830,7 @@
             updateButtons();
             showPage(0);
             
-            // Preload all page animations
+            // Preload all page animations for better performance
             setTimeout(() => {
                 pages.forEach(page => {
                     page.style.visibility = 'visible';
@@ -836,11 +838,11 @@
             }, 100);
         });
 
-        // Initialize immediately as well
+        // Initialize immediately as fallback
         updateButtons();
         showPage(0);
 
-        // Add some magic sparkles periodically
+        // Add periodic sparkle animation refresh
         setInterval(() => {
             const sparkles = document.querySelectorAll('.sparkle');
             sparkles.forEach(sparkle => {
@@ -848,7 +850,7 @@
             });
         }, 5000);
 
-        // Performance optimization
+        // Performance optimization utility
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -861,22 +863,23 @@
             };
         }
 
-        // Add error handling
+        // Global error handling
         window.addEventListener('error', function(event) {
-            console.error('Ein Fehler ist aufgetreten:', event.error);
+            console.error('Application error occurred:', event.error);
         });
 
-        // Add analytics tracking (optional)
+        // Optional analytics tracking for page views
         function trackPageView(pageNumber) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'page_view', {
-                    page_title: `Seite ${pageNumber + 1}`,
-                    page_location: window.location.href
-                });
-            }
+            // Uncomment and configure if you want to track page views
+            // if (typeof gtag !== 'undefined') {
+            //     gtag('event', 'page_view', {
+            //         page_title: `Page ${pageNumber + 1}`,
+            //         page_location: window.location.href
+            //     });
+            // }
         }
 
-        // Track page changes
+        // Enhanced showPage function with analytics
         const originalShowPage = showPage;
         showPage = function(pageIndex) {
             originalShowPage(pageIndex);
