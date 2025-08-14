@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Researcher and The Guide</title>
+    <title>Researchers and their Partners</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -32,15 +32,15 @@
         .page.active {
             display: block; /* The active page is shown */
         }
-@keyframes fadeIn {
+        @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         img {
             max-width: 100%;
-            max-height: 60vh; 
+            max-height: 60vh;
             height: auto;
-            width: auto; 
+            width: auto;
             display: block;
             margin: 0 auto 20px;
             border-radius: 4px;
@@ -49,6 +49,34 @@
         p {
             font-size: 1.1em;
             text-align: center;
+        }
+        .start-page {
+            text-align: center;
+            padding: 60px 40px;
+        }
+        .start-page h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .start-page p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            color: #666;
+        }
+        .end-page {
+            text-align: center;
+            padding: 60px 40px;
+        }
+        .end-page h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+        .end-page p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
         #navigation {
             display: flex;
@@ -74,13 +102,37 @@
             background-color: #cccccc;
             cursor: not-allowed;
         }
+        .start-button, .close-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .start-button:hover, .close-button:hover {
+            background-color: #218838;
+        }
+        .navigation-hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <div id="storybook-container">
+        <!-- Start Page -->
+        <div id="page-0" class="page start-page active">
+            <img src="images/page7.jpg" alt="Researcher presenting confidently at a conference">
+            <h1>Researchers and their Partners</h1>
+            <p>Discover how information specialists transform research journeys</p>
+            <button id="start-button" class="start-button">Start Story</button>
+        </div>
+
         <!-- Story Pages -->
-        <div id="page-1" class="page active">
+        <div id="page-1" class="page">
             <img src="images/page1.jpg" alt="Overwhelmed researcher in a modern office">
             <p>Dr. Aris Thorne was a brilliant researcher, his mind a whirlwind of ideas for a groundbreaking study. But the path from idea to publication was a dense, tangled forest of data management, open access requirements, and endless literature searches. He felt lost, his progress stalled by the sheer weight of information.</p>
         </div>
@@ -113,6 +165,14 @@
             <p>Dr. Thorne realized that excellent research wasn't just about solitary genius. It was about collaboration. In Elara, the Information Specialist, he had found more than a guide; he had found an essential partner. Together, they had turned the tangled forest of research into a clear path to success.</p>
         </div>
 
+        <!-- End Page -->
+        <div id="page-9" class="page end-page">
+            <h2>Need Support with Your Research?</h2>
+            <p>Contact the information specialists at your Max Planck Institute.<br>
+            They're ready to guide you through every step of your research journey.</p>
+            <button id="close-button" class="close-button">Close</button>
+        </div>
+
         <!-- Navigation -->
         <div id="navigation">
             <button id="prev-button" class="nav-button">Previous</button>
@@ -122,10 +182,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let currentPage = 1;
-            const totalPages = 8;
+            let currentPage = 0; // Start at page 0 (start page)
+            const totalStoryPages = 8; // Story pages 1-8
+            const endPage = 9; // End page
             const prevButton = document.getElementById('prev-button');
             const nextButton = document.getElementById('next-button');
+            const startButton = document.getElementById('start-button');
+            const closeButton = document.getElementById('close-button');
+            const navigation = document.getElementById('navigation');
 
             function showPage(pageNumber) {
                 // Hide all pages
@@ -135,10 +199,26 @@
                 // Show the current page
                 document.getElementById('page-' + pageNumber).classList.add('active');
 
-                // Update button states
-                prevButton.disabled = (pageNumber === 1);
-                nextButton.disabled = (pageNumber === totalPages);
+                // Show/hide navigation based on page
+                if (pageNumber === 0 || pageNumber === endPage) {
+                    navigation.style.display = 'none';
+                } else {
+                    navigation.style.display = 'flex';
+                    // Update button states
+                    prevButton.disabled = (pageNumber === 1);
+                    nextButton.disabled = false; // Next button is never disabled during story
+                }
             }
+
+            startButton.addEventListener('click', () => {
+                currentPage = 1; // Go to first story page
+                showPage(currentPage);
+            });
+
+            closeButton.addEventListener('click', () => {
+                currentPage = 0; // Go back to start page
+                showPage(currentPage);
+            });
 
             prevButton.addEventListener('click', () => {
                 if (currentPage > 1) {
@@ -148,8 +228,11 @@
             });
 
             nextButton.addEventListener('click', () => {
-                if (currentPage < totalPages) {
+                if (currentPage < totalStoryPages) {
                     currentPage++;
+                    showPage(currentPage);
+                } else if (currentPage === totalStoryPages) {
+                    currentPage = endPage; // Go to end page after last story page
                     showPage(currentPage);
                 }
             });
