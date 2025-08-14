@@ -1,4 +1,4 @@
-# Maya's Journey - Interactive Storybook
+# Interactive Storybook
 
 An experimental interactive HTML storybook exploring how narrative techniques can be used as training material for scientists. 
 
@@ -23,7 +23,7 @@ This project is a **playful experiment** in transforming scientific content into
 
 ## Demo
 
-🔗 **[Live Demo](https://GITHUB_USERNAME.github.io/REPOSITORY_NAME/)**
+🔗 **[Live Demo](https://thomasgerdes.github.io/mpg-storybook/)**
 
 ## Technical
 
