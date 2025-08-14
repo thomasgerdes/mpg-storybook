@@ -1,23 +1,12 @@
-# Interactive Storybook
+# MPG Storybook
 
-An experimental interactive HTML storybook exploring how narrative techniques can be used as training material for scientists. 
+## Overview
 
-## About
+A visual storytelling approach for communicating libraries' and information specialists' expertise to researchers. This HTML storybook tests how narrative techniques can showcase the value and importance of information services.
 
-This project is a **playful experiment** in transforming scientific content into storybook format. The content itself is somewhat tongue-in-cheek - the real purpose is to explore how storybooks, interactive narratives, and other creative techniques can be effective training tools for researchers and academics.
+## What it does
 
-## Features
-
-- Interactive navigation (click, keyboard, touch/swipe)
-- Responsive design for all devices
-- Custom SVG illustrations
-
-## Purpose
-
-- **Test narrative training methods** for scientific audiences
-- **Explore interactive storytelling** as educational tool
-- **Evaluate AI-assisted content creation** for training materials
-- **Experiment with engaging formats** beyond traditional documentation
+Explains through storytelling format and visuals in which different ways information specialists can support cutting-edge research.
 
 ## Demo
 
@@ -32,8 +21,4 @@ This project is a **playful experiment** in transforming scientific content into
 
 ## Context
 
-Created entirely with AI assistance to test creative approaches to scientific training and communication. The Max-Planck content serves as a lighthearted example - the focus is on the technique, not the specific subject matter.
-
----
-
-*AI-generated experiment in narrative training techniques*
+Created with AI assistance to test visual storytelling techniques for communicating information specialists' expertise to researchers.
