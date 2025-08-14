@@ -1,890 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Maya the Scientist's Journey - An interactive storybook about Max Planck Society's information services">
-    <meta name="author" content="Max Planck Society">
-    <meta name="keywords" content="Max Planck Society, Science, Library, Information Services, Open Access">
-    
-    <!-- Open Graph Meta Tags for better sharing -->
-    <meta property="og:title" content="Maya the Scientist's Journey">
-    <meta property="og:description" content="An interactive storybook about Max Planck Society's knowledge partners">
-    <meta property="og:type" content="website">
-    
-    <title>Maya the Scientist's Journey - MPG Storybook</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMzQ5OERCIi8+Cjx0ZXh0IHg9IjE2IiB5PSIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TTwvdGV4dD4KPC9zdmc+">
-    
+    <title>The Researcher and The Guide</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(45deg, #FFE5B4, #FFEAA7, #DDA0DD, #98D8E8);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease-in-out infinite;
-            overflow: hidden;
-            height: 100vh;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .storybook {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            perspective: 1000px;
+            min-height: 100vh;
+            margin: 0;
         }
-
-        .book {
-            width: 800px;
-            height: 600px;
-            position: relative;
-            transform-style: preserve-3d;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-radius: 10px;
+        #storybook-container {
+            max-width: 800px;
+            width: 95%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-
         .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: #FFF8DC;
-            border: 3px solid #8B4513;
-            border-radius: 10px;
-            padding: 30px;
-            display: none; /* Completely hide inactive pages */
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: inset 0 0 30px rgba(139, 69, 19, 0.1);
-            overflow: hidden;
+            display: none; /* Pages are hidden by default */
+            padding: 20px 40px;
+            animation: fadeIn 0.5s ease-in-out;
         }
-
         .page.active {
-            display: flex;
-            opacity: 1;
-            animation: slideIn 0.6s ease-out;
+            display: block; /* The active page is shown */
         }
-
-        @keyframes slideIn {
-            from { 
-                opacity: 0; 
-                transform: translateX(100%); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateX(0); 
-            }
+@keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        .page.sliding-out {
-            display: flex;
-            animation: slideOut 0.4s ease-in forwards;
-        }
-
-        @keyframes slideOut {
-            from { 
-                opacity: 1; 
-                transform: translateX(0); 
-            }
-            to { 
-                opacity: 0; 
-                transform: translateX(-100%); 
-            }
-        }
-
-        .page-content {
-            display: flex;
-            height: 85%;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .text-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        .illustration {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .page h1 {
-            font-size: 2.5em;
-            color: #2C3E50;
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .page h2 {
-            font-size: 1.6em;
-            color: #E74C3C;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .page p {
-            font-size: 1.1em;
-            line-height: 1.5;
-            color: #34495E;
-            text-align: center;
-            margin-bottom: 10px;
+        img {
             max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 4px;
         }
-
-        .navigation {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        p {
+            font-size: 1.1em;
+            text-align: center;
+        }
+        #navigation {
             display: flex;
-            gap: 20px;
-            z-index: 100;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
         }
-
-        .nav-btn {
-            padding: 12px 20px;
-            background: #3498DB;
+        .nav-button {
+            background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 25px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
             cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
         }
-
-        .nav-btn:hover {
-            background: #2980B9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        .nav-button:hover {
+            background-color: #0056b3;
         }
-
-        .nav-btn:disabled {
-            background: #BDC3C7;
+        .nav-button:disabled {
+            background-color: #cccccc;
             cursor: not-allowed;
-            transform: none;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 1.1em;
-            color: #7F8C8D;
-            font-weight: bold;
-        }
-
-        svg {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .title-page {
-            background: linear-gradient(45deg, #FFE5B4, #FFEAA7);
-            text-align: center;
-            justify-content: center;
-        }
-
-        .title-page h1 {
-            font-size: 3em;
-            color: #2C3E50;
-            margin-bottom: 30px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
-        }
-
-        .title-page .subtitle {
-            font-size: 1.5em;
-            color: #E74C3C;
-            margin-bottom: 40px;
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #FFD700;
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkle 3s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #3498DB, #E74C3C);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-text {
-            color: white;
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .book { 
-                width: 95vw; 
-                height: 85vh; 
-            }
-            .page { 
-                padding: 20px; 
-            }
-            .page h1 { 
-                font-size: 1.8em; 
-            }
-            .page h2 { 
-                font-size: 1.4em; 
-                margin-bottom: 8px;
-            }
-            .page p { 
-                font-size: 1em;
-                margin-bottom: 8px;
-            }
-            .page-content { 
-                flex-direction: column;
-                gap: 15px;
-            }
-            .text-content, .illustration {
-                flex: none;
-            }
-            .illustration {
-                max-height: 40%;
-            }
-            svg {
-                max-height: 200px;
-            }
-            .navigation {
-                bottom: 10px;
-                gap: 15px;
-            }
-            .nav-btn {
-                padding: 10px 16px;
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .title-page h1 {
-                font-size: 2em;
-            }
-            .title-page .subtitle {
-                font-size: 1.2em;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-text">The journey begins...</div>
-        <div class="spinner"></div>
-    </div>
 
-    <div class="storybook">
-        <div class="book" id="book">
-            <!-- Page 1: Title -->
-            <div class="page active title-page">
-                <h1>Maya the Scientist's Journey</h1>
-                <p class="subtitle">A Story About the Knowledge Partners of the Max Planck Society</p>
-                <svg width="300" height="200" viewBox="0 0 300 200">
-                    <defs>
-                        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#87CEEB"/>
-                            <stop offset="100%" style="stop-color:#E0F6FF"/>
-                        </linearGradient>
-                    </defs>
-                    <!-- Sky -->
-                    <rect width="300" height="200" fill="url(#skyGrad)"/>
-                    <!-- Mountains -->
-                    <polygon points="0,150 80,100 160,150 300,150 300,200 0,200" fill="#8FBC8F"/>
-                    <!-- Maya -->
-                    <circle cx="150" cy="120" r="20" fill="#FDBCB4"/>
-                    <circle cx="145" cy="115" r="2" fill="#000"/>
-                    <circle cx="155" cy="115" r="2" fill="#000"/>
-                    <path d="M 145 125 Q 150 130 155 125" stroke="#000" stroke-width="2" fill="none"/>
-                    <rect x="140" y="140" width="20" height="30" fill="#FF6B6B"/>
-                    <rect x="135" y="145" width="8" height="20" fill="#FDBCB4"/>
-                    <rect x="157" y="145" width="8" height="20" fill="#FDBCB4"/>
-                    <!-- Book in hand -->
-                    <rect x="130" y="150" width="8" height="12" fill="#4ECDC4"/>
-                    <!-- Stars -->
-                    <polygon points="50,30 52,36 58,36 53,40 55,46 50,42 45,46 47,40 42,36 48,36" fill="#FFD700"/>
-                    <polygon points="250,50 252,56 258,56 253,60 255,66 250,62 245,66 247,60 242,56 248,56" fill="#FFD700"/>
-                </svg>
-                <div class="sparkle" style="top: 20%; left: 20%; animation-delay: 0s;"></div>
-                <div class="sparkle" style="top: 30%; right: 25%; animation-delay: 1s;"></div>
-                <div class="sparkle" style="bottom: 40%; left: 70%; animation-delay: 2s;"></div>
-                <div class="page-number">1</div>
-            </div>
-
-            <!-- Page 2: Maya's Idea -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="text-content">
-                        <h2>Maya's Big Idea</h2>
-                        <p>Maya had a fantastic research idea!</p>
-                        <p>But she didn't know how to turn it into a real publication.</p>
-                        <p>This is way too complicated!, Maya sighed.</p>
-                    </div>
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Laboratory background -->
-                            <rect width="250" height="300" fill="#F0F8FF"/>
-                            <!-- Desk -->
-                            <rect x="20" y="200" width="210" height="100" fill="#8B4513"/>
-                            <!-- Maya -->
-                            <circle cx="125" cy="150" r="25" fill="#FDBCB4"/>
-                            <circle cx="120" cy="145" r="3" fill="#000"/>
-                            <circle cx="130" cy="145" r="3" fill="#000"/>
-                            <path d="M 120 155 Q 125 160 130 155" stroke="#000" stroke-width="2" fill="none"/>
-                            <rect x="110" y="175" width="30" height="40" fill="#4ECDC4"/>
-                            <!-- Hair -->
-                            <ellipse cx="125" cy="135" rx="20" ry="15" fill="#8B4513"/>
-                            <!-- Notes -->
-                            <rect x="80" y="210" width="20" height="15" fill="#FFF"/>
-                            <rect x="150" y="215" width="25" height="20" fill="#FFF"/>
-                            <!-- Light bulb (idea) -->
-                            <circle cx="180" cy="100" r="15" fill="#FFD700"/>
-                            <rect x="175" y="115" width="10" height="8" fill="#C0C0C0"/>
-                            <!-- Question marks -->
-                            <text x="60" y="80" font-family="Arial" font-size="30" fill="#FF6B6B">?</text>
-                            <text x="70" y="120" font-family="Arial" font-size="20" fill="#FF6B6B">?</text>
-                        </svg>
-                    </div>
-                </div>
-                <div class="page-number">2</div>
-            </div>
-
-            <!-- Page 3: The Library -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Library -->
-                            <rect width="250" height="300" fill="#FFF8DC"/>
-                            <!-- Bookshelves -->
-                            <rect x="10" y="50" width="30" height="180" fill="#8B4513"/>
-                            <rect x="210" y="50" width="30" height="180" fill="#8B4513"/>
-                            <!-- Books -->
-                            <rect x="12" y="60" width="6" height="25" fill="#FF6B6B"/>
-                            <rect x="18" y="60" width="6" height="25" fill="#4ECDC4"/>
-                            <rect x="24" y="60" width="6" height="25" fill="#FFD93D"/>
-                            <rect x="30" y="60" width="6" height="25" fill="#6BCF7F"/>
-                            <!-- More books -->
-                            <rect x="212" y="100" width="6" height="30" fill="#FF6B6B"/>
-                            <rect x="218" y="100" width="6" height="30" fill="#4ECDC4"/>
-                            <rect x="224" y="100" width="6" height="30" fill="#FFD93D"/>
-                            <rect x="230" y="100" width="6" height="30" fill="#6BCF7F"/>
-                            <!-- Dr. Knowledge (Information specialist) -->
-                            <circle cx="125" cy="120" r="20" fill="#FDBCB4"/>
-                            <circle cx="120" cy="115" r="2" fill="#000"/>
-                            <circle cx="130" cy="115" r="2" fill="#000"/>
-                            <path d="M 120 125 Q 125 130 130 125" stroke="#000" stroke-width="2" fill="none"/>
-                            <rect x="115" y="140" width="20" height="35" fill="#2C3E50"/>
-                            <!-- Glasses -->
-                            <circle cx="120" cy="115" r="6" stroke="#000" stroke-width="1" fill="none"/>
-                            <circle cx="130" cy="115" r="6" stroke="#000" stroke-width="1" fill="none"/>
-                            <line x1="126" y1="115" x2="124" y2="115" stroke="#000" stroke-width="1"/>
-                            <!-- Maya -->
-                            <circle cx="80" cy="150" r="18" fill="#FDBCB4"/>
-                            <rect x="70" y="168" width="20" height="30" fill="#4ECDC4"/>
-                            <!-- Desk -->
-                            <rect x="60" y="200" width="130" height="80" fill="#DEB887"/>
-                            <!-- Computer -->
-                            <rect x="100" y="180" width="50" height="30" fill="#000"/>
-                            <rect x="105" y="185" width="40" height="20" fill="#4169E1"/>
-                        </svg>
-                    </div>
-                    <div class="text-content">
-                        <h2>Dr. Knowledge Helps!</h2>
-                        <p>Suddenly someone knocked on the door.</p>
-                        <p>Hello Maya! I'm Dr. Knowledge and I'm here to help!</p>
-                        <p>We'll guide you from idea to publication!</p>
-                    </div>
-                </div>
-                <div class="page-number">3</div>
-            </div>
-
-            <!-- Page 4: The Ecosystem -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="text-content">
-                        <h2>The Magical Ecosystem</h2>
-                        <p>Look Maya! Here's our ecosystem!</p>
-                        <p>There were quiet rooms for thinking, coworking areas for teams, and digital tools.</p>
-                        <p>Here you can focus completely on your research!</p>
-                    </div>
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Library room -->
-                            <rect width="250" height="300" fill="#E6F3FF"/>
-                            <!-- Floor -->
-                            <rect x="0" y="250" width="250" height="50" fill="#DEB887"/>
-                            <!-- Coworking area -->
-                            <rect x="20" y="200" width="80" height="50" fill="#FFE5B4"/>
-                            <text x="35" y="230" font-family="Arial" font-size="12" fill="#2C3E50">Coworking</text>
-                            <!-- Quiet zone -->
-                            <rect x="150" y="180" width="80" height="70" fill="#E8F8F5"/>
-                            <text x="170" y="220" font-family="Arial" font-size="12" fill="#2C3E50">Quiet Zone</text>
-                            <!-- Computer area -->
-                            <rect x="80" y="120" width="90" height="60" fill="#FFF0F5"/>
-                            <text x="110" y="155" font-family="Arial" font-size="12" fill="#2C3E50">Digital</text>
-                            <!-- People -->
-                            <circle cx="60" cy="210" r="8" fill="#FDBCB4"/>
-                            <circle cx="190" cy="190" r="8" fill="#FDBCB4"/>
-                            <circle cx="125" cy="130" r="8" fill="#FDBCB4"/>
-                            <!-- Books on shelves -->
-                            <rect x="10" y="50" width="230" height="20" fill="#8B4513"/>
-                            <rect x="15" y="55" width="5" height="10" fill="#FF6B6B"/>
-                            <rect x="25" y="55" width="5" height="10" fill="#4ECDC4"/>
-                            <rect x="35" y="55" width="5" height="10" fill="#FFD93D"/>
-                            <!-- Clouds for "magical" feeling -->
-                            <ellipse cx="50" cy="30" rx="15" ry="8" fill="#FFF" opacity="0.8"/>
-                            <ellipse cx="200" cy="40" rx="20" ry="10" fill="#FFF" opacity="0.8"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="page-number">4</div>
-            </div>
-
-            <!-- Page 5: The Services -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Toolbox -->
-                            <rect width="250" height="300" fill="#F0FFFF"/>
-                            <!-- Large toolbox -->
-                            <rect x="50" y="100" width="150" height="120" fill="#8B4513"/>
-                            <rect x="55" y="105" width="140" height="110" fill="#DEB887"/>
-                            <!-- Tools -->
-                            <!-- AI symbol -->
-                            <circle cx="90" cy="140" r="15" fill="#FF6B6B"/>
-                            <text x="85" y="145" font-family="Arial" font-size="12" fill="#FFF">AI</text>
-                            <!-- Data symbol -->
-                            <rect x="110" y="125" width="20" height="30" fill="#4ECDC4"/>
-                            <rect x="115" y="130" width="10" height="5" fill="#FFF"/>
-                            <rect x="115" y="140" width="10" height="5" fill="#FFF"/>
-                            <rect x="115" y="150" width="10" height="5" fill="#FFF"/>
-                            <!-- Open Access symbol -->
-                            <circle cx="160" cy="140" r="15" fill="#6BCF7F"/>
-                            <text x="155" y="145" font-family="Arial" font-size="10" fill="#FFF">OA</text>
-                            <!-- Training symbol -->
-                            <rect x="75" y="170" width="25" height="15" fill="#FFD93D"/>
-                            <text x="83" y="180" font-family="Arial" font-size="8" fill="#000">EDU</text>
-                            <!-- ORCID symbol -->
-                            <circle cx="140" cy="180" r="12" fill="#A6E22E"/>
-                            <text x="135" y="185" font-family="Arial" font-size="8" fill="#000">ID</text>
-                            <!-- Maya watching -->
-                            <circle cx="125" cy="50" r="20" fill="#FDBCB4"/>
-                            <circle cx="120" cy="45" r="2" fill="#000"/>
-                            <circle cx="130" cy="45" r="2" fill="#000"/>
-                            <ellipse cx="125" cy="60" rx="5" ry="3" fill="#000"/>
-                            <rect x="115" y="70" width="20" height="25" fill="#4ECDC4"/>
-                        </svg>
-                    </div>
-                    <div class="text-content">
-                        <h2>The Magic Toolbox</h2>
-                        <p>Here are all our magical tools!</p>
-                        <p>AI training, data management, ORCID IDs, and Open Access!</p>
-                        <p>This will make your research visible around the world!</p>
-                    </div>
-                </div>
-                <div class="page-number">5</div>
-            </div>
-
-            <!-- Page 6: Open Access -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="text-content">
-                        <h2>The Open Access Portal</h2>
-                        <p>This is the Open Access Portal!</p>
-                        <p>Here your research becomes accessible to everyone.</p>
-                        <p>So other scientists can learn from your work!</p>
-                    </div>
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Night sky background -->
-                            <defs>
-                                <radialGradient id="glow" cx="50%" cy="50%">
-                                    <stop offset="0%" style="stop-color:#FFD700"/>
-                                    <stop offset="100%" style="stop-color:#FFA500"/>
-                                </radialGradient>
-                            </defs>
-                            <rect width="250" height="300" fill="#191970"/>
-                            <!-- Glowing door -->
-                            <rect x="100" y="120" width="60" height="100" fill="url(#glow)"/>
-                            <rect x="105" y="125" width="50" height="90" fill="#FFD700"/>
-                            <circle cx="145" cy="170" r="3" fill="#8B4513"/>
-                            <!-- Light rays -->
-                            <polygon points="125,120 135,50 140,50 130,120" fill="#FFFF00" opacity="0.7"/>
-                            <polygon points="125,120 115,40 120,40 130,120" fill="#FFFF00" opacity="0.7"/>
-                            <polygon points="125,120 145,35 150,35 130,120" fill="#FFFF00" opacity="0.7"/>
-                            <!-- Maya and Dr. Knowledge -->
-                            <circle cx="70" cy="180" r="15" fill="#FDBCB4"/>
-                            <rect x="60" y="195" width="20" height="25" fill="#4ECDC4"/>
-                            <circle cx="180" cy="170" r="15" fill="#FDBCB4"/>
-                            <rect x="170" y="185" width="20" height="25" fill="#2C3E50"/>
-                            <!-- Stars -->
-                            <polygon points="30,50 32,56 38,56 33,60 35,66 30,62 25,66 27,60 22,56 28,56" fill="#FFF"/>
-                            <polygon points="200,80 202,86 208,86 203,90 205,96 200,92 195,96 197,90 192,86 198,86" fill="#FFF"/>
-                            <!-- Open Access symbol -->
-                            <circle cx="125" cy="170" r="8" fill="#FFF"/>
-                            <text x="120" y="175" font-family="Arial" font-size="10" fill="#000">OA</text>
-                        </svg>
-                    </div>
-                </div>
-                <div class="page-number">6</div>
-            </div>
-
-            <!-- Page 7: The Publication -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Celebration background -->
-                            <rect width="250" height="300" fill="#FFF8DC"/>
-                            <!-- Confetti -->
-                            <rect x="50" y="30" width="3" height="3" fill="#FF6B6B" transform="rotate(45 50 30)"/>
-                            <rect x="80" y="50" width="3" height="3" fill="#4ECDC4" transform="rotate(30 80 50)"/>
-                            <rect x="200" y="40" width="3" height="3" fill="#FFD93D" transform="rotate(60 200 40)"/>
-                            <rect x="170" y="70" width="3" height="3" fill="#6BCF7F" transform="rotate(90 170 70)"/>
-                            <!-- Large publication -->
-                            <rect x="75" y="100" width="100" height="130" fill="#FFF"/>
-                            <rect x="70" y="95" width="100" height="130" fill="#4169E1"/>
-                            <text x="90" y="120" font-family="Arial" font-size="12" fill="#FFF">Maya's</text>
-                            <text x="85" y="140" font-family="Arial" font-size="12" fill="#FFF">Research</text>
-                            <text x="95" y="160" font-family="Arial" font-size="10" fill="#FFF">Published</text>
-                            <text x="100" y="180" font-family="Arial" font-size="10" fill="#FFF">Open</text>
-                            <text x="95" y="200" font-family="Arial" font-size="10" fill="#FFF">Access</text>
-                            <!-- Maya celebrating -->
-                            <circle cx="125" cy="250" r="20" fill="#FDBCB4"/>
-                            <circle cx="120" cy="245" r="2" fill="#000"/>
-                            <circle cx="130" cy="245" r="2" fill="#000"/>
-                            <ellipse cx="125" cy="255" rx="8" ry="5" fill="#000"/>
-                            <rect x="115" y="270" width="20" height="25" fill="#4ECDC4"/>
-                            <!-- Celebrating arms -->
-                            <rect x="100" y="260" width="12" height="4" fill="#FDBCB4" transform="rotate(-30 106 262)"/>
-                            <rect x="138" y="260" width="12" height="4" fill="#FDBCB4" transform="rotate(30 144 262)"/>
-                            <!-- Globe in background -->
-                            <circle cx="200" cy="150" r="25" fill="#87CEEB"/>
-                            <ellipse cx="200" cy="140" rx="15" ry="8" fill="#6BCF7F"/>
-                            <ellipse cx="210" cy="155" rx="8" ry="12" fill="#6BCF7F"/>
-                        </svg>
-                    </div>
-                    <div class="text-content">
-                        <h2>Maya's Success!</h2>
-                        <p>A few months later, it was done!</p>
-                        <p>Maya proudly held her first publication in her hands.</p>
-                        <p>Thank you, Dr. Knowledge! This would never have been possible without you!</p>
-                    </div>
-                </div>
-                <div class="page-number">7</div>
-            </div>
-
-            <!-- Page 8: The End -->
-            <div class="page">
-                <div class="page-content">
-                    <div class="text-content">
-                        <h2>The Moral of the Story</h2>
-                        <p>The information specialists are true knowledge partners!</p>
-                        <p>They help all scientists from idea to publication.</p>
-                        <p><strong>Please feel free to contact us anytime!</strong></p>
-                        <p style="text-align: center; font-size: 1.4em; color: #E74C3C; margin-top: 20px;"><em>The End</em></p>
-                    </div>
-                    <div class="illustration">
-                        <svg width="250" height="300" viewBox="0 0 250 300">
-                            <!-- Sunset -->
-                            <defs>
-                                <linearGradient id="sunset" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FFB347"/>
-                                    <stop offset="50%" style="stop-color:#FFCCCB"/>
-                                    <stop offset="100%" style="stop-color:#DDA0DD"/>
-                                </linearGradient>
-                            </defs>
-                            <rect width="250" height="300" fill="url(#sunset)"/>
-                            <!-- Sun -->
-                            <circle cx="125" cy="80" r="30" fill="#FFD700"/>
-                            <!-- MPG building silhouette -->
-                            <rect x="30" y="180" width="40" height="120" fill="#2C3E50"/>
-                            <rect x="80" y="160" width="50" height="140" fill="#2C3E50"/>
-                            <rect x="140" y="170" width="45" height="130" fill="#2C3E50"/>
-                            <rect x="190" y="190" width="35" height="110" fill="#2C3E50"/>
-                            <!-- Windows -->
-                            <rect x="35" y="190" width="8" height="10" fill="#FFD700"/>
-                            <rect x="85" y="170" width="8" height="10" fill="#FFD700"/>
-                            <rect x="145" y="180" width="8" height="10" fill="#FFD700"/>
-                            <!-- Maya and Dr. Knowledge as silhouettes -->
-                            <circle cx="70" cy="200" r="8" fill="#000"/>
-                            <rect x="65" y="208" width="10" height="15" fill="#000"/>
-                            <circle cx="110" cy="195" r="8" fill="#000"/>
-                            <rect x="105" y="203" width="10" height="15" fill="#000"/>
-                            <!-- Birds -->
-                            <path d="M 180 100 Q 185 95 190 100" stroke="#000" stroke-width="2" fill="none"/>
-                            <path d="M 200 90 Q 205 85 210 90" stroke="#000" stroke-width="2" fill="none"/>
-                            <!-- "The End" text -->
-                            <text x="125" y="250" font-family="Arial" font-size="24" fill="#2C3E50" text-anchor="middle">The End</text>
-                        </svg>
-                    </div>
-                </div>
-                <div class="page-number">8</div>
-            </div>
+    <div id="storybook-container">
+        <!-- Story Pages -->
+        <div id="page-1" class="page active">
+            <img src="/images/17300039419677902479.jpeg" alt="Overwhelmed researcher in a modern office">
+            <p>Dr. Aris Thorne was a brilliant researcher, his mind a whirlwind of ideas for a groundbreaking study. But the path from idea to publication was a dense, tangled forest of data management, open access requirements, and endless literature searches. He felt lost, his progress stalled by the sheer weight of information.</p>
+        </div>
+        <div id="page-2" class="page">
+            <img src="/images/17219483582535342795.jpeg" alt="Researcher meeting an Information Specialist">
+            <p>He decided to visit the institute's information specialists. He met Elara, who wasn't just a guardian of books, but a guide for the modern research landscape. "Think of me as a partner in your research," she said with a welcoming smile. "My goal is to help you navigate this forest."</p>
+        </div>
+        <div id="page-3" class="page">
+            <img src="/images/9063657214644245915.jpeg" alt="Researcher using digital tools for his work">
+            <p>Elara introduced him to advanced search strategies and tools, transforming his literature search from a chore into a targeted exploration. She organized workshops on distinguishing credible journals from predatory ones, sharpening his publication strategy and safeguarding his research's integrity.</p>
+        </div>
+        <div id="page-4" class="page">
+            <img src="/images/14969759810091055356.jpeg" alt="Collaborating on data management on a large screen">
+            <p>They tackled his data, implementing the FAIR principles to make it Findable, Accessible, Interoperable, and Reusable. Elara helped him create a solid data management plan, turning his chaotic notes into a structured, valuable dataset for the future.</p>
+        </div>
+        <div id="page-5" class="page">
+            <img src="/images/12131152393537052290.jpeg" alt="Symbolic image of Open Access on a tablet">
+            <p>When it was time to publish, Elara was an invaluable resource. She navigated the complexities of Open Access, ensuring his work would be freely available to the world. She managed the publication funds and documented his findings in the university's repository, guaranteeing its long-term visibility.</p>
+        </div>
+        <div id="page-6" class="page">
+            <img src="/images/1353670855391707830.jpeg" alt="Researcher's professional profile on a tablet">
+            <p>To build his reputation, Elara assisted him in creating a unique researcher ID, ensuring all his publications were correctly attributed to him. She helped him maintain his publication profiles, which were crucial for showcasing his scientific impact and for formal evaluations.</p>
+        </div>
+        <div id="page-7" class="page">
+            <img src="/images/12779367424115515459.jpeg" alt="Researcher presenting confidently at a conference">
+            <p>With a strong publication and a polished professional profile, Dr. Thorne's reputation grew. He presented his findings with confidence, his work reaching a wider audience and making a real impact in his field.</p>
+        </div>
+        <div id="page-8" class="page">
+            <img src="/images/17346371721952078130.jpeg" alt="Partners celebrating success with a high-five">
+            <p>Dr. Thorne realized that excellent research wasn't just about solitary genius. It was about collaboration. In Elara, the Information Specialist, he had found more than a guide; he had found an essential partner. Together, they had turned the tangled forest of research into a clear path to success.</p>
         </div>
 
-        <div class="navigation">
-            <button class="nav-btn" id="prevBtn" onclick="prevPage()" aria-label="Previous page">◀ Previous</button>
-            <button class="nav-btn" id="nextBtn" onclick="nextPage()" aria-label="Next page">Next ▶</button>
+        <!-- Navigation -->
+        <div id="navigation">
+            <button id="prev-button" class="nav-button">Zurück</button>
+            <button id="next-button" class="nav-button">Weiter</button>
         </div>
     </div>
 
     <script>
-        let currentPage = 0;
-        const pages = document.querySelectorAll('.page');
-        const totalPages = pages.length;
-
-        function updateButtons() {
-            document.getElementById('prevBtn').disabled = currentPage === 0;
-            document.getElementById('nextBtn').disabled = currentPage === totalPages - 1;
-        }
-
-        function showPage(pageIndex) {
-            // Hide current active page
-            const currentActivePage = document.querySelector('.page.active');
-            if (currentActivePage) {
-                currentActivePage.classList.remove('active');
-                currentActivePage.classList.add('sliding-out');
-                
-                // Remove sliding class after animation
-                setTimeout(() => {
-                    currentActivePage.classList.remove('sliding-out');
-                }, 400);
-            }
-            
-            // Show new page
-            setTimeout(() => {
-                if (pageIndex >= 0 && pageIndex < totalPages) {
-                    pages[pageIndex].classList.add('active');
-                }
-            }, currentActivePage ? 200 : 0);
-            
-            updateButtons();
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                showPage(currentPage);
-                
-                // Visual feedback
-                const activeBtn = document.getElementById('nextBtn');
-                activeBtn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    activeBtn.style.transform = '';
-                }, 100);
-            }
-        }
-
-        function prevPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-                
-                // Visual feedback
-                const activeBtn = document.getElementById('prevBtn');
-                activeBtn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    activeBtn.style.transform = '';
-                }, 100);
-            }
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowRight' || event.key === ' ') {
-                event.preventDefault();
-                nextPage();
-            } else if (event.key === 'ArrowLeft') {
-                event.preventDefault();
-                prevPage();
-            }
-        });
-
-        // Enhanced touch/swipe support for mobile devices
-        let startX = 0;
-        let endX = 0;
-        let startY = 0;
-        let endY = 0;
-        let isScrolling = false;
-
-        document.addEventListener('touchstart', function(event) {
-            startX = event.touches[0].clientX;
-            startY = event.touches[0].clientY;
-            isScrolling = false;
-        }, { passive: true });
-
-        document.addEventListener('touchmove', function(event) {
-            if (!startX || !startY) return;
-            
-            const currentX = event.touches[0].clientX;
-            const currentY = event.touches[0].clientY;
-            
-            const diffX = Math.abs(currentX - startX);
-            const diffY = Math.abs(currentY - startY);
-            
-            // Detect if user is scrolling vertically
-            if (diffY > diffX) {
-                isScrolling = true;
-            }
-        }, { passive: true });
-
-        document.addEventListener('touchend', function(event) {
-            if (!startX || isScrolling) return;
-            
-            endX = event.changedTouches[0].clientX;
-            handleSwipe();
-            
-            // Reset values
-            startX = 0;
-            startY = 0;
-            endX = 0;
-            endY = 0;
-        }, { passive: true });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0 && currentPage < totalPages - 1) {
-                    nextPage(); // Swipe left = next page
-                } else if (diff < 0 && currentPage > 0) {
-                    prevPage(); // Swipe right = previous page
-                }
-            }
-        }
-
-        // Initialize application
         document.addEventListener('DOMContentLoaded', function() {
-            // Hide loading screen after brief delay
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 1500);
-            
-            updateButtons();
-            showPage(0);
-            
-            // Preload all page animations for better performance
-            setTimeout(() => {
-                pages.forEach(page => {
-                    page.style.visibility = 'visible';
+            let currentPage = 1;
+            const totalPages = 8;
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+
+            function showPage(pageNumber) {
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
                 });
-            }, 100);
-        });
+                // Show the current page
+                document.getElementById('page-' + pageNumber).classList.add('active');
 
-        // Initialize immediately as fallback
-        updateButtons();
-        showPage(0);
+                // Update button states
+                prevButton.disabled = (pageNumber === 1);
+                nextButton.disabled = (pageNumber === totalPages);
+            }
 
-        // Add periodic sparkle animation refresh
-        setInterval(() => {
-            const sparkles = document.querySelectorAll('.sparkle');
-            sparkles.forEach(sparkle => {
-                sparkle.style.animationDelay = Math.random() * 3 + 's';
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
             });
-        }, 5000);
 
-        // Performance optimization utility
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
 
-        // Global error handling
-        window.addEventListener('error', function(event) {
-            console.error('Application error occurred:', event.error);
+            // Initial setup
+            showPage(currentPage);
         });
-
-        // Optional analytics tracking for page views
-        function trackPageView(pageNumber) {
-            // Uncomment and configure if you want to track page views
-            // if (typeof gtag !== 'undefined') {
-            //     gtag('event', 'page_view', {
-            //         page_title: `Page ${pageNumber + 1}`,
-            //         page_location: window.location.href
-            //     });
-            // }
-        }
-
-        // Enhanced showPage function with analytics
-        const originalShowPage = showPage;
-        showPage = function(pageIndex) {
-            originalShowPage(pageIndex);
-            trackPageView(pageIndex);
-        };
     </script>
+
 </body>
 </html>
