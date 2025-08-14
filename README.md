@@ -11,8 +11,6 @@ This project is a **playful experiment** in transforming scientific content into
 - Interactive navigation (click, keyboard, touch/swipe)
 - Responsive design for all devices
 - Custom SVG illustrations
-- Smooth page transitions
-- GitHub Pages ready
 
 ## Purpose
 
