@@ -1,4 +1,4 @@
-# MPG Storybook
+# Information Specialist Storybook
 
 ## Overview
 
