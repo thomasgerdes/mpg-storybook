@@ -10,7 +10,7 @@ Explains through storytelling format and visuals in which different ways informa
 
 ## Demo
 
-🔗 **[Live Demo]([information specialists](https://thomasgerdes.github.io/information-specialist-storybook/)**
+🔗 **[Live Demo](https://thomasgerdes.github.io/information-specialist-storybook/)**
 
 ## Technical
 
