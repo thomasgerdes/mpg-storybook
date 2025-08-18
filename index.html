@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive storybook about researchers and information specialists collaboration">
+    <meta name="author" content="Thomas Gerdes">
+    <meta name="keywords" content="research, information specialist, academic collaboration, Max Planck Institute">
     <title>Researchers and their Partners</title>
     <style>
         body {
@@ -121,47 +124,52 @@
     </style>
 </head>
 <body>
+    <!-- 
+    Researchers and their Partners - Interactive Storybook
+    Author: Thomas Gerdes | License: MIT
+    Digital story about collaboration between researchers and information specialists
+    -->
 
     <div id="storybook-container">
         <!-- Start Page -->
         <div id="page-0" class="page start-page active">
-            <img src="images/page8.jpg">
+            <img src="images/page8.jpg" alt="Information specialist and researcher collaborating">
             <h1>Researchers and their Partners</h1>
             <p>Discover how information specialists transform research journeys</p>
-            <button id="start-button" class="start-button">Start Story</button>
+            <button id="start-button" class="start-button" aria-label="Start the story">Start Story</button>
         </div>
 
         <!-- Story Pages -->
         <div id="page-1" class="page">
-            <img src="images/page1.jpg">
+            <img src="images/page1.jpg" alt="Dr. Aris Thorne overwhelmed by research challenges">
             <p>Dr. Aris Thorne was a brilliant researcher, his mind a whirlwind of ideas for a groundbreaking study. But the path from idea to publication was a dense, tangled forest of data management, open access requirements, and endless literature searches. He felt lost, his progress stalled by the sheer weight of information.</p>
         </div>
         <div id="page-2" class="page">
-            <img src="images/page2.jpg">
+            <img src="images/page2.jpg" alt="Colleague recommending Elara the information specialist">
             <p>Overwhelmed, he confided in a fellow researcher about his struggles. "You should talk to Elara," she suggested with understanding. "She's our information specialist - not just a guardian of books, but a guide for the modern research landscape. Think of her as a partner in your research. She can help you navigate this forest."</p>
         </div>
         <div id="page-3" class="page">
-            <img src="images/page3.jpg">
+            <img src="images/page3.jpg" alt="Elara teaching advanced search strategies and workshop">
             <p>Elara introduced him to advanced search strategies and tools, transforming his literature search from a chore into a targeted exploration. She organized workshops on distinguishing credible journals from predatory ones, sharpening his publication strategy and safeguarding his research's integrity.</p>
         </div>
         <div id="page-4" class="page">
-            <img src="images/page4.jpg">
+            <img src="images/page4.jpg" alt="Data management with FAIR principles implementation">
             <p>They tackled his data, implementing the FAIR principles to make it Findable, Accessible, Interoperable, and Reusable. Elara helped him create a solid data management plan, turning his chaotic notes into a structured, valuable dataset for the future.</p>
         </div>
         <div id="page-5" class="page">
-            <img src="images/page5.jpg">
+            <img src="images/page5.jpg" alt="Publication support and Open Access navigation">
             <p>When it was time to publish, Elara was an invaluable resource. She navigated the complexities of Open Access, ensuring his work would be freely available to the world. She managed the publication funds and documented his findings in the MPG's repository, guaranteeing its long-term visibility.</p>
         </div>
         <div id="page-6" class="page">
-            <img src="images/page6.jpg">
+            <img src="images/page6.jpg" alt="Creating researcher ID and building academic profile">
             <p>To build his reputation, Elara assisted him in creating a unique researcher ID, ensuring all his publications were correctly attributed to him. She helped him maintain his publication profiles, which were crucial for showcasing his scientific impact and for formal evaluations.</p>
         </div>
         <div id="page-7" class="page">
-            <img src="images/page7.jpg">
+            <img src="images/page7.jpg" alt="Dr. Thorne presenting research with confidence">
             <p>With a strong publication and a polished professional profile, Dr. Thorne's reputation grew. He presented his findings with confidence, his work reaching a wider audience and making a real impact in his field.</p>
         </div>
         <div id="page-8" class="page">
-            <img src="images/page8.jpg" alt="Information specialist">
+            <img src="images/page8.jpg" alt="Successful partnership between researcher and information specialist">
             <p>Dr. Thorne realized that excellent research wasn't just about solitary genius. It was about collaboration. In Elara, the Information Specialist, he had found more than a guide; he had found an essential partner. Together, they had turned the tangled forest of research into a clear path to success.</p>
         </div>
 
@@ -170,14 +178,14 @@
             <h2>Need Support with Your Research?</h2>
             <p>Contact the information specialists at your Max Planck Institute.<br>
             They're ready to guide you through every step of your research journey.</p>
-            <button id="close-button" class="close-button">Close</button>
+            <button id="close-button" class="close-button" aria-label="Close story and return to start">Close</button>
         </div>
 
         <!-- Navigation -->
-        <div id="navigation">
-            <button id="prev-button" class="nav-button">Previous</button>
-            <button id="next-button" class="nav-button">Next</button>
-        </div>
+        <nav id="navigation" aria-label="Story navigation">
+            <button id="prev-button" class="nav-button" aria-label="Previous page">Previous</button>
+            <button id="next-button" class="nav-button" aria-label="Next page">Next</button>
+        </nav>
     </div>
 
     <script>
